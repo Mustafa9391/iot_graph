@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">graph</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="connected">Connected</string>
+</resources>
