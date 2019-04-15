@@ -3,6 +3,7 @@ package com.sc.afatsum.iot;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -15,7 +16,8 @@ import static com.sc.afatsum.iot.Config.ValToShow;
 public class Mainpage extends AppCompatActivity {
     Button BTTemp;
     Button BTHumd;
-    Button BTLum;
+    Button BTLumOn;
+    Button BTLumOff;
     LinearLayout LLBluetooth;
 
     @Override
@@ -45,18 +47,27 @@ public class Mainpage extends AppCompatActivity {
                 BLEConnect();
             }
         });
-        BTLum = (Button) findViewById(R.id.BTLum);
-        BTLum.setOnClickListener(new View.OnClickListener() {
+        BTLumOn = (Button) findViewById(R.id.BTLum);
+        BTLumOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Lum();
+                Lum(1);
+            }
+        });
+
+        BTLumOff = (Button) findViewById(R.id.BTLumOff);
+        BTLumOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Lum(0);
             }
         });
     }
 
-    public void Lum() {
-        if (HandlerConnectedBLE.bluetoothLeService != null)
-            HandlerConnectedBLE.bluetoothLeService.WriteValue("code140\n");
+    public void Lum(int i) {
+        if (HandlerConnectedBLE.bluetoothLeService != null){
+            Log.d("sendBLEData","code140");
+            HandlerConnectedBLE.bluetoothLeService.WriteValue("code14"+i+"\n");}
 
     }
 

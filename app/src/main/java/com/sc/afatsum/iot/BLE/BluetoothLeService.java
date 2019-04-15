@@ -126,14 +126,18 @@ public class BluetoothLeService extends Service {
                                          BluetoothGattCharacteristic characteristic,
                                          int status) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
+                Log.d("datav",characteristic.getValue().toString());
                 broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
+
             }
         }
 
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt,
                                             BluetoothGattCharacteristic characteristic) {
+            Log.d("datav",characteristic.getValue().toString());
             broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
+
         }
     };
 
@@ -159,7 +163,7 @@ public class BluetoothLeService extends Service {
         //  Log.v(TAG, "broadcastUpdate()");
 
         final byte[] data = characteristic.getValue();
-        // Log.v("AndroidLE", "data.length: " + data.length);
+        Log.v("AndroidLE", "data.length: " + data.length);
 
         if (data != null && data.length > 0) {
             for (byte byteChar : data) {
