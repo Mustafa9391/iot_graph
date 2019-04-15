@@ -63,7 +63,7 @@ public class Mainpage extends AppCompatActivity {
             }
         });
     }
-
+ 
     public void Lum(int i) {
         if (HandlerConnectedBLE.bluetoothLeService != null){
             Log.d("sendBLEData","code140");
